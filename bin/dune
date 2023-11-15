@@ -1,0 +1,4 @@
+(executable
+ (public_name leetcode_ocaml)
+ (name main)
+ (libraries easy))
