@@ -1,4 +1,4 @@
 open Printf
 
 (* main *)
-let () = List.iter (printf "%d\n") (Easy.running_sum_of_1d_array [ 1; 3; 6 ])
+let () = List.iter (printf "%s\n") (Easy.fizz_buzz_list 15)

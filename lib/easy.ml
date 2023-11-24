@@ -31,3 +31,42 @@ let%test "richest_customer_wealth" =
   in
   let want = [ 6; 10 ] in
   List.equal Int.equal got want
+
+(* PROBLEM fizz_buzz *)
+(* https://leetcode.com/problems/fizz-buzz/description/ *)
+let fizz_buzz n =
+  if n mod 15 = 0 then "FizzBuzz"
+  else if n mod 3 = 0 then "Fizz"
+  else if n mod 5 = 0 then "Buzz"
+  else Int.to_string n
+
+let fizz_buzz_list n =
+  let (_ :: tl) = List.init (n + 1) (fun n -> fizz_buzz n) in
+  tl
+
+let%test "fizz_buzz_list" =
+  let got = [ fizz_buzz_list 3; fizz_buzz_list 5; fizz_buzz_list 15 ] in
+  let want =
+    [
+      [ "1"; "2"; "Fizz" ];
+      [ "1"; "2"; "Fizz"; "4"; "Buzz" ];
+      [
+        "1";
+        "2";
+        "Fizz";
+        "4";
+        "Buzz";
+        "Fizz";
+        "7";
+        "8";
+        "Fizz";
+        "Buzz";
+        "11";
+        "Fizz";
+        "13";
+        "14";
+        "FizzBuzz";
+      ];
+    ]
+  in
+  List.equal (List.equal String.equal) got want
